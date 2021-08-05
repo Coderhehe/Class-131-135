@@ -15,7 +15,6 @@ function setup() {
 function modelLoaded() {
     console.log("Model Is Loaded");
     status=true;
-    object.detect(video,gotResult);
 }
 function gotResult(error,result){
 if (error) {
@@ -29,10 +28,11 @@ else{
 
 function draw() {
     image(video,0,0,380,380);
-r=random(255);
+    if(status!=""){
+        r=random(255);
 g=random(255);
 b=random(255);
-    if(status!=""){
+object.detect(video,gotResult);
 for (i=0; i < object.length; i++)  {
     document.getElementById("status").innerHTML="Status:Objects Detected ";
     document.getElementById("nobject").innerHTML="Number Of Objects Dectected:  "+object.length;
